@@ -58,8 +58,8 @@ Group:        System/Libraries
 Akonadi Calendar Integration
 
 %files -n %libkf5akonadicalendar
-%_kf5_libdir/libKF5AkonadiCalendar.so.%{kf5akonadicalendar_major}*
-%_kf5_libdir/libKF5AkonadiCalendar.so.5
+%_libdir/libKF5AkonadiCalendar.so.%{kf5akonadicalendar_major}*
+%_libdir/libKF5AkonadiCalendar.so.5
 
 #--------------------------------------------------------------------
 
@@ -77,12 +77,12 @@ This package contains header files needed if you wish to build applications
 based on %name.
 
 %files -n %kf5akonadicalendar_devel
-%_kf5_includedir/Akonadi/Calendar
-%_kf5_includedir/akonadi/calendar
-%_kf5_includedir/*_version.h
-%_kf5_libdir/*.so
-%_kf5_libdir/cmake/KF5AkonadiCalendar
-%_qt5_prefix/mkspecs/modules/*.pri
+%_includedir/KF5/Akonadi/Calendar
+%_includedir/KF5/akonadi/calendar
+%_includedir/KF5/*_version.h
+%_libdir/*.so
+%_libdir/cmake/KF5AkonadiCalendar
+%_libdir/qt5/mkspecs/modules/*.pri
 
 #--------------------------------------------------------------------
 
