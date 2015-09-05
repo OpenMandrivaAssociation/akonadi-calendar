@@ -4,12 +4,10 @@
 #
 #define debug_package %{nil}
 
-%define rel 1
-
 Summary:        Akonadi Calendar Integration
 Name:           akonadi-calendar
 Version: 15.08.0
-Release:        %mkrel %rel
+Release:        1
 License:        GPLv2+
 Group:          System/Base
 Source0:        http://fr2.rpmfind.net/linux/KDE/stable/plasma/%{name}-%{version}.tar.xz
@@ -21,21 +19,22 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 
-BuildRequires:  kf5-macros
-BuildRequires:  kdelibs4support-devel >= 5.12.0
-BuildRequires:  kio-devel >= 5.12.0
-BuildRequires:  kwallet-devel >= 5.12.0
-BuildRequires:  kcodecs-devel >= 5.12.0
-BuildRequires:  kmailtransport-devel 
-BuildRequires:  kcontacts-devel
-BuildRequires:  kidentitymanagement-devel
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcalutils-devel
-BuildRequires:  akonadi-devel
-BuildRequires:  kdepimlibs-devel
+BuildRequires:	cmake(Qt5Test)
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5KDELibs4Support)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5Wallet)
+BuildRequires:	cmake(KF5Codecs)
+BuildRequires:	cmake(KF5MailTransport)
+BuildRequires:	cmake(KF5Contacts)
+BuildRequires:	cmake(KF5IdentityManagement)
+BuildRequires:	cmake(KF5CalendarCore)
+BuildRequires:	cmake(KF5CalendarUtils)
+BuildRequires:	cmake(KF5Akonadi)
+BuildRequires:	cmake(KF5AkonadiContact)
 
 BuildRequires:  boost-devel
-BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  sasl-devel
 
 
 BuildRequires:	libxml2-utils
@@ -92,31 +91,10 @@ based on %name.
 %apply_patches
 
 %build
-%cmake_kf5
-%make
+%cmake_kde5
+%ninja
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
-%find_lang --all %{name}5
-
-
-
-%changelog
-* Wed Aug 19 2015 neoclust <neoclust> 15.08.0-1.mga6
-+ Revision: 865896
-- New version 15.08.0
-- New version 15.07.90
-
-* Wed Aug 12 2015 neoclust <neoclust> 15.07.90-2.mga6
-+ Revision: 863755
-- Plasma Mass Rebuild - Rebuild for new Plasma
-
-* Sun Aug 09 2015 neoclust <neoclust> 15.07.90-1.mga6
-+ Revision: 861709
-- New version 15.07.90
-
-* Tue Jul 28 2015 neoclust <neoclust> 15.07.80-1.mga6
-+ Revision: 858656
-- imported package akonadi-calendar
 
