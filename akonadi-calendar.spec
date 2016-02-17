@@ -6,7 +6,7 @@
 
 Summary:        Akonadi Calendar Integration
 Name:           akonadi-calendar
-Version:	15.12.1
+Version:	15.12.2
 Release:	1
 License:        GPLv2+
 Group:          System/Base
