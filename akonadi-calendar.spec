@@ -6,8 +6,8 @@
 
 Summary:        Akonadi Calendar Integration
 Name:           akonadi-calendar
-Version:	15.12.3
-Release:	2
+Version:	16.04.0
+Release:	1
 License:        GPLv2+
 Group:          System/Base
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
@@ -53,12 +53,13 @@ Akonadi Calendar Integration
 
 #--------------------------------------------------------------------
 
-%define kf5akonadicalendar_major 4
+%define kf5akonadicalendar_major 5
 %define libkf5akonadicalendar %mklibname kf5akonadicalendar %{kf5akonadicalendar_major}
 
 %package -n %libkf5akonadicalendar
 Summary:      Akonadi Calendar Integration
 Group:        System/Libraries
+Obsoletes:    %mklibname kf5akonadicalendar 4
 
 
 %description -n %libkf5akonadicalendar
@@ -66,7 +67,6 @@ Akonadi Calendar Integration
 
 %files -n %libkf5akonadicalendar
 %_libdir/libKF5AkonadiCalendar.so.%{kf5akonadicalendar_major}*
-%_libdir/libKF5AkonadiCalendar.so.5
 
 #--------------------------------------------------------------------
 
