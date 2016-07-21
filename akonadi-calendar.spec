@@ -6,7 +6,7 @@
 
 Summary:        Akonadi Calendar Integration
 Name:           akonadi-calendar
-Version:	16.04.2
+Version:	16.04.3
 Release:	1
 License:        GPLv2+
 Group:          System/Base
