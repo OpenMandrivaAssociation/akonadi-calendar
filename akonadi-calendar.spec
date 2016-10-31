@@ -1,31 +1,15 @@
-#
-# Please do not update/rebuild/touch this package before asking first to mikala and/or neoclust
-# This package is part of the KDE Stack.
-#
-#define debug_package %{nil}
-
-Summary:        Akonadi Calendar Integration
-Name:           akonadi-calendar
+Summary:	Akonadi Calendar Integration
+Name:		akonadi-calendar
 Version:	16.08.2
 Release:	1
-License:        GPLv2+
-Group:          System/Base
-%define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
-%if %{is_beta}
-%define ftpdir unstable
-%else
-%define ftpdir stable
-%endif
-Source0:        http://download.kde.org/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
-
-
-URL:            https://www.kde.org/
-
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-
+License:	GPLv2+
+Group:		Graphical desktop/KDE
+Source0:	http://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+URL:		https://www.kde.org/
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(Qt5Test)
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5KDELibs4Support)
@@ -39,69 +23,63 @@ BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(KF5CalendarUtils)
 BuildRequires:	cmake(KF5Akonadi)
 BuildRequires:	cmake(KF5AkonadiContact)
-
-BuildRequires:  boost-devel
-BuildRequires:  sasl-devel
-
-
+BuildRequires:	boost-devel
+BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
 
 %description
-Akonadi Calendar Integration
+Akonadi Calendar Integration.
 
 #--------------------------------------------------------------------
 
-%define kf5akonadicalendar_major 5
-%define libkf5akonadicalendar %mklibname kf5akonadicalendar %{kf5akonadicalendar_major}
+%define major 5
+%define libname %mklibname KF5AkonadiCalendar %{major}
 
-%package -n %libkf5akonadicalendar
+%package -n %{libname}
 Summary:      Akonadi Calendar Integration
 Group:        System/Libraries
 Obsoletes:    %mklibname kf5akonadicalendar 4
+Obsoletes:    %mklibname kf5akonadicalendar 5
 
-
-%description -n %libkf5akonadicalendar
+%description -n %{libname}
 Akonadi Calendar Integration
 
-%files -n %libkf5akonadicalendar
-%_libdir/libKF5AkonadiCalendar.so.%{kf5akonadicalendar_major}*
+%files -n %{libname}
+%{_libdir}/libKF5AkonadiCalendar.so.%{major}*
 
 #--------------------------------------------------------------------
 
-%define kf5akonadicalendar_devel %mklibname kf5akonadicalendar -d
+%define develname %mklibname KF5AkonadiCalendar -d
 
-%package -n %kf5akonadicalendar_devel
-
-Summary:        Devel stuff for %name
+%package -n %{develname}
+Summary:        Devel stuff for %{name}
 Group:          Development/KDE and Qt
-Requires:       %libkf5akonadicalendar = %version-%release
-Provides:       %name-devel = %{version}-%{release}
+Requires:       %{libname} = %{EVRD}
+Provides:       %{name}-devel = %{EVRD}
 
-%description -n %kf5akonadicalendar_devel
+%description -n %{develname}
 This package contains header files needed if you wish to build applications
-based on %name.
+based on %{name}.
 
-%files -n %kf5akonadicalendar_devel
-%_includedir/KF5/Akonadi/Calendar
-%_includedir/KF5/akonadi/calendar
-%_includedir/KF5/*_version.h
-%_libdir/*.so
-%_libdir/cmake/KF5AkonadiCalendar
-%_libdir/qt5/mkspecs/modules/*.pri
+%files -n %{develname}
+%{_includedir}/KF5/Akonadi/Calendar
+%{_includedir}/KF5/akonadi/calendar
+%{_includedir}/KF5/*_version.h
+%{_libdir}/*.so
+%{_libdir}/cmake/KF5AkonadiCalendar
+%{_libdir}/qt5/mkspecs/modules/*.pri
 
 #--------------------------------------------------------------------
 
 %prep
 %setup -q 
 %apply_patches
+%cmake_kde5
 
 %build
-%cmake_kde5
-%ninja
+%ninja -C build
 
 %install
 %ninja_install -C build
-
-
