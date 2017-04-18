@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	17.03.80
+Version:	17.04.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -35,19 +35,24 @@ BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
 
+%define major 5
+%define libname %mklibname KF5AkonadiCalendar %{major}
+
+Requires:	%{libname} = %{EVRD}
+
 %description
 Akonadi Calendar Integration.
 
-#--------------------------------------------------------------------
+%files -f libakonadi-calendar5.lang
 
-%define major 5
-%define libname %mklibname KF5AkonadiCalendar %{major}
+#--------------------------------------------------------------------
 
 %package -n %{libname}
 Summary:      Akonadi Calendar Integration
 Group:        System/Libraries
 Obsoletes:    %mklibname kf5akonadicalendar 4
 Obsoletes:    %mklibname kf5akonadicalendar 5
+Requires:     %{name} = %{EVRD}
 
 %description -n %{libname}
 Akonadi Calendar Integration
@@ -89,3 +94,4 @@ based on %{name}.
 
 %install
 %ninja_install -C build
+%find_lang libakonadi-calendar5
