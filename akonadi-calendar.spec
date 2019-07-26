@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	19.04.3
+Version:	19.07.80
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -44,8 +44,8 @@ Requires:	%{libname} = %{EVRD}
 Akonadi Calendar Integration.
 
 %files -f libakonadi-calendar5.lang -f libakonadi-calendar5-serializer.lang
-%{_sysconfdir}/xdg/akonadi-calendar.categories
-%{_sysconfdir}/xdg/akonadi-calendar.renamecategories
+%{_datadir}/qlogging-categories5/akonadi-calendar.categories
+%{_datadir}/qlogging-categories5/akonadi-calendar.renamecategories
 %{_libdir}/qt5/plugins/akonadi_serializer_kcalcore.so
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
 
