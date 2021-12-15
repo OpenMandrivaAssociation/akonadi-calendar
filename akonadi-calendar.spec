@@ -34,6 +34,9 @@ BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
+# For QCH format docs
+BuildRequires: doxygen
+BuildRequires: qt5-assistant
 
 %define major 5
 %define libname %mklibname KF5AkonadiCalendar %{major}
