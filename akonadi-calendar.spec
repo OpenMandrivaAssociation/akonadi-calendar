@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	21.12.2
+Version:	22.03.80
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -46,11 +46,17 @@ Requires:	%{libname} = %{EVRD}
 %description
 Akonadi Calendar Integration.
 
-%files -f libakonadi-calendar5.lang -f libakonadi-calendar5-serializer.lang
+%files -f libakonadi-calendar5.lang -f libakonadi-calendar5-serializer.lang -f kalendarac.lang
 %{_datadir}/qlogging-categories5/akonadi-calendar.categories
 %{_datadir}/qlogging-categories5/akonadi-calendar.renamecategories
 %{_libdir}/qt5/plugins/akonadi_serializer_kcalcore.so
 %{_datadir}/akonadi/plugins/serializer/akonadi_serializer_kcalcore.desktop
+%{_sysconfdir}/xdg/autostart/org.kde.kalendarac.desktop
+%{_bindir}/kalendarac
+%{_datadir}/dbus-1/services/org.kde.kalendarac.service
+%{_datadir}/knotifications5/kalendarac.notifyrc
+%{_datadir}/qlogging-categories5/org_kde_kalendarac.categories
+
 
 #--------------------------------------------------------------------
 
@@ -82,9 +88,7 @@ This package contains header files needed if you wish to build applications
 based on %{name}.
 
 %files -n %{develname}
-%{_includedir}/KF5/Akonadi/Calendar
-%{_includedir}/KF5/akonadi/calendar
-%{_includedir}/KF5/*_version.h
+%{_includedir}/KF5/AkonadiCalendar
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5AkonadiCalendar
 %{_libdir}/qt5/mkspecs/modules/*.pri
@@ -102,3 +106,4 @@ based on %{name}.
 %ninja_install -C build
 %find_lang libakonadi-calendar5
 %find_lang libakonadi-calendar5-serializer
+%find_lang kalendarac
