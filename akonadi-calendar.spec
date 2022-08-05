@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	22.04.3
+Version:	22.07.90
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -72,6 +72,7 @@ Akonadi Calendar Integration
 
 %files -n %{libname}
 %{_libdir}/libKF5AkonadiCalendar.so.%{major}*
+%{_libdir}/qt5/plugins/kf5/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
 
 #--------------------------------------------------------------------
 
