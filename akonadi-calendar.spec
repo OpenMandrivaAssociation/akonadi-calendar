@@ -1,7 +1,7 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	22.12.3
-Release:	2
+Version:	23.03.90
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
@@ -39,7 +39,8 @@ BuildRequires: doxygen
 BuildRequires: qt5-assistant
 
 %define major 5
-%define libname %mklibname KF5AkonadiCalendar %{major}
+%define oldlibname %mklibname KF5AkonadiCalendar 5
+%define libname %mklibname KPim5AkonadiCalendar
 
 Requires:	%{libname} = %{EVRD}
 
@@ -66,31 +67,35 @@ Group:        System/Libraries
 Obsoletes:    %mklibname kf5akonadicalendar 4
 Obsoletes:    %mklibname kf5akonadicalendar 5
 Requires:     %{name} = %{EVRD}
+%rename %{oldlibname}
 
 %description -n %{libname}
 Akonadi Calendar Integration
 
 %files -n %{libname}
-%{_libdir}/libKF5AkonadiCalendar.so.%{major}*
+%{_libdir}/libKPim5AkonadiCalendar.so.%{major}*
 %{_libdir}/qt5/plugins/kf5/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
 
 #--------------------------------------------------------------------
 
-%define develname %mklibname KF5AkonadiCalendar -d
+%define olddevelname %mklibname KF5AkonadiCalendar -d
+%define develname %mklibname KPim5AkonadiCalendar -d
 
 %package -n %{develname}
 Summary:        Devel stuff for %{name}
 Group:          Development/KDE and Qt
 Requires:       %{libname} = %{EVRD}
 Provides:       %{name}-devel = %{EVRD}
+%rename %{olddevelname}
 
 %description -n %{develname}
 This package contains header files needed if you wish to build applications
 based on %{name}.
 
 %files -n %{develname}
-%{_includedir}/KF5/AkonadiCalendar
+%{_includedir}/KPim5/AkonadiCalendar
 %{_libdir}/*.so
+%{_libdir}/cmake/KPim5AkonadiCalendar
 %{_libdir}/cmake/KF5AkonadiCalendar
 %{_libdir}/qt5/mkspecs/modules/*.pri
 
