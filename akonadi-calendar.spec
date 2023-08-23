@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -22,13 +22,14 @@ BuildRequires:	cmake(KF5KDELibs4Support)
 BuildRequires:	cmake(KF5KIO)
 BuildRequires:	cmake(KF5Wallet)
 BuildRequires:	cmake(KF5Codecs)
-BuildRequires:	cmake(KF5MailTransport)
+BuildRequires:	cmake(KPim5MailTransport)
+BuildRequires:	cmake(KPim5MessageCore)
 BuildRequires:	cmake(KF5Contacts)
-BuildRequires:	cmake(KF5IdentityManagement)
+BuildRequires:	cmake(KPim5IdentityManagement)
 BuildRequires:	cmake(KF5CalendarCore)
-BuildRequires:	cmake(KF5CalendarUtils)
-BuildRequires:	cmake(KF5Akonadi)
-BuildRequires:	cmake(KF5AkonadiContact)
+BuildRequires:	cmake(KPim5CalendarUtils)
+BuildRequires:	cmake(KPim5Akonadi)
+BuildRequires:	cmake(KPim5AkonadiContact)
 BuildRequires:	boost-devel
 BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
@@ -98,6 +99,7 @@ based on %{name}.
 %{_libdir}/cmake/KPim5AkonadiCalendar
 %{_libdir}/cmake/KF5AkonadiCalendar
 %{_libdir}/qt5/mkspecs/modules/*.pri
+%optional %doc %{_docdir}/qt5/*.{qch,tags}
 
 #--------------------------------------------------------------------
 
