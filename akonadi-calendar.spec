@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	23.08.2
+Version:	23.08.3
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
