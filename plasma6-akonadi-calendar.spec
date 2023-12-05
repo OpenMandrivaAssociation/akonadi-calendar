@@ -31,6 +31,7 @@ BuildRequires:	cmake(KPim6CalendarUtils)
 BuildRequires:	cmake(KPim6Akonadi)
 BuildRequires:	cmake(KPim6AkonadiContactCore)
 BuildRequires:	cmake(KF6Notifications)
+BuildRequires:	cmake(KF6TextTemplate)
 BuildRequires:	boost-devel
 BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
