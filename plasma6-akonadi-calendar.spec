@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		plasma6-akonadi-calendar
-Version:	24.01.80
+Version:	24.01.85
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -59,6 +59,7 @@ Akonadi Calendar Integration.
 %{_datadir}/dbus-1/services/org.kde.kalendarac.service
 %{_datadir}/knotifications6/kalendarac.notifyrc
 %{_datadir}/qlogging-categories6/org_kde_kalendarac.categories
+%{_datadir}/knotifications6/notification_gui.notifyrc
 
 
 #--------------------------------------------------------------------
