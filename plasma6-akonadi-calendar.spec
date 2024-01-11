@@ -1,6 +1,6 @@
 Summary:	Akonadi Calendar Integration
 Name:		plasma6-akonadi-calendar
-Version:	24.01.85
+Version:	24.01.90
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -49,7 +49,7 @@ Requires:	%{libname} = %{EVRD}
 %description
 Akonadi Calendar Integration.
 
-%files -f libakonadi-calendar5.lang -f libakonadi-calendar5-serializer.lang -f kalendarac.lang
+%files -f libakonadi-calendar6.lang -f libakonadi-calendar6-serializer.lang -f kalendarac.lang
 %{_datadir}/qlogging-categories6/akonadi-calendar.categories
 %{_datadir}/qlogging-categories6/akonadi-calendar.renamecategories
 %{_libdir}/qt6/plugins/akonadi_serializer_kcalcore.so
@@ -108,6 +108,6 @@ based on %{name}.
 
 %install
 %ninja_install -C build
-%find_lang libakonadi-calendar5
-%find_lang libakonadi-calendar5-serializer
+%find_lang libakonadi-calendar6
+%find_lang libakonadi-calendar6-serializer
 %find_lang kalendarac
