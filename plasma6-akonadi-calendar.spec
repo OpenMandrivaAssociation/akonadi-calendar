@@ -1,7 +1,10 @@
+%define git 20240217
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	Akonadi Calendar Integration
 Name:		plasma6-akonadi-calendar
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
@@ -10,7 +13,11 @@ Group:		Graphical desktop/KDE
 %else
 %define ftpdir stable
 %endif
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/pim/akonadi-calendar/-/archive/%{gitbranch}/akonadi-calendar-%{gitbranchd}.tar.bz2#/akonadi-calendar-20240217.tar.bz2
+%else
 Source0:	http://download.kde.org/%{ftpdir}/release-service/%{version}/src/akonadi-calendar-%{version}.tar.xz
+%endif
 URL:		https://www.kde.org/
 BuildRequires:	cmake(Qt6)
 BuildRequires:	cmake(Qt6Core)
@@ -98,7 +105,7 @@ based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n akonadi-calendar-%{version}
+%autosetup -p1 -n akonadi-calendar-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
