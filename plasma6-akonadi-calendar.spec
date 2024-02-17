@@ -14,7 +14,7 @@ Group:		Graphical desktop/KDE
 %define ftpdir stable
 %endif
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/pim/akonadi-calendar/-/archive/%{gitbranch}/akonadi-calendar-%{gitbranchd}.tar.bz2#/akonadi-calendar-20240217.tar.bz2
+Source0:	https://invent.kde.org/pim/akonadi-calendar/-/archive/%{gitbranch}/akonadi-calendar-%{gitbranchd}.tar.bz2#/akonadi-calendar-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{ftpdir}/release-service/%{version}/src/akonadi-calendar-%{version}.tar.xz
 %endif
