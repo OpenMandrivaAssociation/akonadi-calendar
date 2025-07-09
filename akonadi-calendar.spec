@@ -2,7 +2,7 @@
 %define gitbranch release/24.02
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	Akonadi Calendar Integration
-Name:		plasma6-akonadi-calendar
+Name:		akonadi-calendar
 Version:	25.04.0
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
