@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -47,6 +47,10 @@ BuildRequires:	docbook-style-xsl
 # For QCH format docs
 BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+# Renamed after 6.0 2025-07-10
+%rename plasma6-akonadi-calendar
 
 %define major 6
 %define libname %mklibname KPim6AkonadiCalendar
@@ -104,17 +108,7 @@ based on %{name}.
 
 #--------------------------------------------------------------------
 
-%prep
-%autosetup -p1 -n akonadi-calendar-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
+%install -a
 %find_lang libakonadi-calendar6
 %find_lang libakonadi-calendar6-serializer
 %find_lang kalendarac
