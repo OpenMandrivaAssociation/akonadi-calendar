@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	25.04.3
+Version:	25.08.0
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -72,7 +72,6 @@ Akonadi Calendar Integration.
 %{_datadir}/qlogging-categories6/org_kde_kalendarac.categories
 %{_datadir}/knotifications6/notification_gui.notifyrc
 
-
 #--------------------------------------------------------------------
 
 %package -n %{libname}
@@ -85,6 +84,7 @@ Akonadi Calendar Integration
 
 %files -n %{libname}
 %{_libdir}/libKPim6AkonadiCalendar.so.*
+%{_libdir}/libKPim6AkonadiCalendarCore.so.*
 %{_libdir}/qt6/plugins/kf6/org.kde.kcalendarcore.calendars/libakonadicalendarplugin.so
 
 #--------------------------------------------------------------------
@@ -103,8 +103,10 @@ based on %{name}.
 
 %files -n %{develname}
 %{_includedir}/KPim6/AkonadiCalendar
+%{_includedir}/KPim6/AkonadiCalendarCore
 %{_libdir}/*.so
 %{_libdir}/cmake/KPim6AkonadiCalendar
+%{_libdir}/cmake/KPim6AkonadiCalendarCore
 
 #--------------------------------------------------------------------
 
