@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
-Version:	26.04.3
+Version:	26.08.0
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -49,6 +49,8 @@ BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
 BuildSystem:	cmake
 BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+# Needs pysideqenum.h, not shipped by current pyside6
+BuildOption:	-DBUILD_PYTHON_BINDINGS:BOOL=OFF
 # Renamed after 6.0 2025-07-10
 %rename plasma6-akonadi-calendar
 
