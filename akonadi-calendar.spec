@@ -52,6 +52,7 @@ BuildRequires:	cmake(Shiboken6)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python%{pyver}dist(build)
 BuildRequires:	akonadi-python
+BuildRequires:	python-kcoreaddons
 BuildRequires:	python-kcalendarcore
 BuildSystem:	cmake
 BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
@@ -122,6 +123,7 @@ Group:		Development/Python
 Requires:	%{name} = %{EVRD}
 Requires:	%{libname} = %{EVRD}
 Requires:	akonadi-python
+Requires:	python-kcoreaddons
 Requires:	python-kcalendarcore
 
 %description python
