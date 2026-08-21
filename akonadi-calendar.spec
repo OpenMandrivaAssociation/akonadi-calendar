@@ -47,10 +47,13 @@ BuildRequires:	docbook-style-xsl
 # For QCH format docs
 BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
+BuildRequires:	cmake(PySide6)
+BuildRequires:	cmake(Shiboken6)
+BuildRequires:	python%{pyver}dist(build)
+BuildRequires:	akonadi-python
+BuildRequires:	python-kcalendarcore
 BuildSystem:	cmake
 BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
-# Needs pysideqenum.h, not shipped by current pyside6
-BuildOption:	-DBUILD_PYTHON_BINDINGS:BOOL=OFF
 # Renamed after 6.0 2025-07-10
 %rename plasma6-akonadi-calendar
 
@@ -109,6 +112,24 @@ based on %{name}.
 %{_libdir}/*.so
 %{_libdir}/cmake/KPim6AkonadiCalendar
 %{_libdir}/cmake/KPim6AkonadiCalendarCore
+
+#--------------------------------------------------------------------
+
+%package python
+Summary:	Python bindings for %{name}
+Group:		Development/Python
+Requires:	%{name} = %{EVRD}
+Requires:	%{libname} = %{EVRD}
+Requires:	akonadi-python
+Requires:	python-kcalendarcore
+
+%description python
+PySide bindings for %{name}.
+
+%files python
+%{_libdir}/python*/site-packages/AkonadiCalendar.cpython-*.so
+%{_datadir}/PySide6/typesystems/typesystem_akonadi_calendar.xml
+%{_includedir}/PySide6/AkonadiCalendar
 
 #--------------------------------------------------------------------
 
