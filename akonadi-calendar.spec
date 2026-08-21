@@ -49,6 +49,7 @@ BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
 BuildRequires:	cmake(PySide6)
 BuildRequires:	cmake(Shiboken6)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	python%{pyver}dist(build)
 BuildRequires:	akonadi-python
 BuildRequires:	python-kcalendarcore
