@@ -4,7 +4,7 @@
 Summary:	Akonadi Calendar Integration
 Name:		akonadi-calendar
 Version:	26.08.2
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
@@ -49,7 +49,7 @@ BuildRequires: doxygen
 BuildRequires: qt6-qttools-assistant
 BuildRequires:	cmake(PySide6)
 BuildRequires:	cmake(Shiboken6)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(build)
 BuildRequires:	akonadi-python
 BuildRequires:	python-kcoreaddons
